@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Horas de Pedreiro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Horas de Pedreiro</h1>
+        <p>Insira o tempo estimado em horas para o trabalho:</p>
+        <input type="number" id="horas" placeholder="Ex: 2">
+        <button onclick="converterHoras()">Converter</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function converterHoras() {
+            // Obter o valor das horas inserido pelo usuário
+            let horasNormais = document.getElementById("horas").value;
+
+            // Verificar se o valor é válido
+            if (!horasNormais || horasNormais <= 0) {
+                document.getElementById("resultado").innerHTML = "Por favor, insira um número válido de horas!";
+                return;
+            }
+
+            // Multiplicar as horas normais por um fator de "demora"
+            let fatorDemora = Math.random() * (3 - 1.5) + 1.5;  // Multiplica por um número aleatório entre 1.5 e 3
+            let horasPedreiro = (horasNormais * fatorDemora).toFixed(2);
+
+            // Exibir o resultado
+            document.getElementById("resultado").innerHTML = `Esse trabalho de ${horasNormais} horas levará aproximadamente ${horasPedreiro} horas de pedreiro!`;
+        }
+    </script>
+</body>
+</html>
